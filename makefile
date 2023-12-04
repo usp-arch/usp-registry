@@ -27,3 +27,6 @@ down:
 restart:
 	make down
 	make up
+
+login:
+	docker login ${WWW_DOMAIN}:5000 -u ${REG_USER} -p ${REG_PASS}
