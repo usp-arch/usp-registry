@@ -16,7 +16,7 @@ generate-cert:
 	openssl req -new -x509 -days 1461 -nodes -out public.pem -keyout private.key -subj "/C=${CERT_SETTINGS_C}/ST=${CERT_SETTINGS_ST}/L=${CERT_SETTINGS_L}/O=Global Security/OU=IT Department/CN=${WWW_DOMAIN}"
 
 generate-pass:
-	htpasswd -Bbn ${REG_USER} ${REG_PASS} > /etc/docker/auth/htpasswd
+	htpasswd -Bbn ${REG_USER} ${REG_PASS} > ./auth/.htpasswd
 
 up:
 	@docker compose up -d --remove-orphans
