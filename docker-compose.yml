@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  registry:
+    image: registry:latest
+    container_name: registry
+    hostname: registry
+    restart: unless-stopped
+    ports:
+      - 5000:5000
+    env_file:
+      - .env
+    volumes:
+      - /etc/letsencrypt/live/${WWW_DOMAIN}/fullchain.pem:/certs/fullchain.pem
+      - /etc/letsencrypt/live/${WWW_DOMAIN}/privkey.pem:/certs/privkey.pem
+      - ./auth:/auth
